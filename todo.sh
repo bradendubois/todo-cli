@@ -41,8 +41,7 @@ fi
 case $1 in
     
     # Add item
-    -a | -add | --add )            
-                            shift
+    -a | -add | --add )     shift
                             add "$@"
                             exit 0
                             ;;
@@ -60,14 +59,13 @@ case $1 in
                             ;;
     
     # Complete a task
-    -c | --complete )       
-                            shift
+    -c | --complete )       shift
                             complete "$@"
                             exit 0
                             ;;
     
     # Clear / remove all tasks
-    -clear | --clear )      clear
+    -clear | --clear )      clear_all
                             exit 0
                             ;;
 

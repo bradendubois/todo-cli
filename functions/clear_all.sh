@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Clear all the stored todo entries
-clear() {
+clear_all() {
     
     echo -n "Clear all stored entries? (Y/N): "
     read RESPONSE
