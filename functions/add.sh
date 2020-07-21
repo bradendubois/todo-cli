@@ -23,6 +23,9 @@ add() {
         -h | --high )               shift
                                     echo -e "- ${HIGH_PRIORITY}$*${NC}" >> "${SETTINGS_FILE}"
                                     ;;
+        
+        # No priority specified
+        * )                         echo -e "- $*" >> "${SETTINGS_FILE}"
 
     esac
 }

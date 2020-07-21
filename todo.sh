@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-SETTINGS_FILE="$HOME/.todo"
+# Simple, command-line to-do manager
 
           #################################################################################
          #                                                                               #
@@ -14,24 +14,22 @@ SETTINGS_FILE="$HOME/.todo"
  #                                                                               #
 #################################################################################
 
-# Simple, command-line to-do manager
+# Default location to store information to
+SETTINGS_FILE="$HOME/.todo"
+
+# The "usage" file to read if no option is given or help is requested
+HELP_FILE="$(dirname "$0")/usage_file"
+
+# Load the default colors file
+. $(dirname "$0")/colors/pastel
 
 # Import all the functions from the functions subdirectory
 . $(dirname "$0")/functions/import_functions.sh
-
-# Import the functions that control loading/creating settings
-. $(dirname "$0")/settings/load.sh
-. $(dirname "$0")/settings/create.sh
-. $(dirname "$0")/colors/pastel
-
 
 # Try creating a settings file, if one does not exist
 if [ ! -f "${SETTINGS_FILE}" ]; then
     create "${SETTINGS_FILE}"
 fi
-
-# Load the configuration file
-load()
 
 # No argument / function called; default to help/usage
 if [ "$#" == 0 ]; then
@@ -49,13 +47,13 @@ case $1 in
                             ;;
 
     # Remove item
-    -r | -rm )              shift
+    -r | -rm | --remove )   shift
                             remove "$@"
                             exit 0
                             ;;
     
     # List all items
-    -l | -ls )              shift
+    -l | -ls | --list )     shift
                             list
                             exit 0
                             ;;
@@ -79,6 +77,7 @@ case $1 in
 
     # Not recognized, default to help/usage
     * )                     shift
+                            echo "Unknown command."
                             help "$@"
                             exit 1
                             ;;

@@ -31,4 +31,5 @@ remove() {
     
     # Use sed to rewrite the file in-place and delete the range of lines
     sed -i "${LOWER},${UPPER}d" "${SETTINGS_FILE}"
+    echo "Removed."
 }
