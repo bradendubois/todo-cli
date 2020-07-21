@@ -22,6 +22,8 @@ SETTINGS_FILE="$HOME/.todo"
 # Import the functions that control loading/creating settings
 . $(dirname "$0")/settings/load.sh
 . $(dirname "$0")/settings/create.sh
+. $(dirname "$0")/colors/pastel
+
 
 # Try creating a settings file, if one does not exist
 if [ ! -f "${SETTINGS_FILE}" ]; then
@@ -54,7 +56,7 @@ case $1 in
     
     # List all items
     -l | -ls )              shift
-                            ls "$@"
+                            list
                             exit 0
                             ;;
     

@@ -5,4 +5,5 @@
 . $(dirname "$0")/functions/add.sh
 . $(dirname "$0")/functions/clear_all.sh
 . $(dirname "$0")/functions/help.sh
+. $(dirname "$0")/functions/list.sh
 . $(dirname "$0")/functions/remove.sh

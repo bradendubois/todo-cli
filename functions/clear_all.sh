@@ -6,8 +6,18 @@ clear_all() {
     echo -n "Clear all stored entries? (Y/N): "
     read RESPONSE
 
-    if [ "${RESPONSE}" = "Y" -o "${RESPONSE}" = "y" ]; then
-        echo "Clearing!"
+    # Read the response
+    case $RESPONSE in
 
-    fi
+        y | Y )     echo "Clearing!"
+                    echo "" > "${SETTINGS_FILE}"
+                    ;;
+
+        n | N )     exit 1
+                    ;;
+
+        * )         echo "Invalid response, exiting."
+                    exit 1
+                    ;;
+    esac   
 }

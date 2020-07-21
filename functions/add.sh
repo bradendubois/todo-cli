@@ -10,28 +10,19 @@ add() {
     case $1 in
 
         # Low priority
-        -l | --low )                PRIORITY="LOW"
-                                    shift
+        -l | --low )                shift
+                                    echo -e "- ${LOW_PRIORITY}$*${NC}" >> "${SETTINGS_FILE}"
                                     ;;
         
         # Medium priority
-        -m | --medium )             PRIORITY="MEDIUM"
-                                    shift
+        -m | --medium )             shift
+                                    echo -e "- ${MEDIUM_PRIORITY}$*${NC}" >> "${SETTINGS_FILE}"                            
                                     ;;
         
         # High priority
-        -h | --high )               PRIORITY="HIGH"
-                                    shift
+        -h | --high )               shift
+                                    echo -e "- ${HIGH_PRIORITY}$*${NC}" >> "${SETTINGS_FILE}"
                                     ;;
 
     esac
-
-    # Relay priority parsed
-    if [ "${PRIORITY}" != "" ]; then
-        echo "Priority: ${PRIORITY}"
-    fi
-
-    # Message that would be added
-    echo "Message: $*"
-
 }
